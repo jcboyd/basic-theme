@@ -1,0 +1,152 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+%% --- Colour theme ---
+
+% MINES colours
+\definecolor{primary}{rgb}{0, 0.36, 0.62}
+\definecolor{secondary}{rgb}{0.7, 0.7, 0.7}
+\definecolor{tertiary}{rgb}{0, 0, 0}
+
+% Curie colours
+%\definecolor{primary}{rgb}{0.98, 0.53, 0.04}
+%\definecolor{secondary}{rgb}{0.73, 0.73, 0.73}
+%\definecolor{tertiary}{rgb}{0.32, 0.32, 0.32}
+
+% Settings
+\setbeamercolor*{title page header}{fg=black}
+\setbeamercolor*{author}{fg=white}
+\setbeamercolor*{date}{fg=white}
+\setbeamercolor*{item}{fg=primary}
+
+%% --- Inner theme ---
+
+% Title page design
+\defbeamertemplate*{title page}{texsx}[1][] {
+    \begin{tikzpicture}[
+        remember picture,
+        overlay,
+        node distance=0.75cm]
+
+        \useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+
+        \node[
+            rectangle, 
+            yshift=1.5cm,
+            color=primary,
+            drop shadow,
+            rounded corners,
+            fill=white,
+            opacity=1.0,
+            anchor=south,
+            minimum width=10cm,
+            minimum height=1.5cm,
+            font=\sffamily\scshape\Large] at (current page.center) (titlebox){\inserttitle};
+
+        \node[
+            below=of titlebox,
+            color=tertiary,
+            font=\sffamily\scshape] (authorbox) {\insertauthor};
+
+        \node[
+            below=of authorbox,
+            inner sep=0,
+            color=tertiary] (titlegraphicbox) {\inserttitlegraphic};
+
+        \node[
+            below=of titlegraphicbox,
+            font=\sffamily\scshape\small,
+            color=tertiary] (datebox) {\insertdate};
+
+    \end{tikzpicture}
+}
+
+% Items
+\setbeamertemplate{items}[square]
+\setbeamertemplate{sections/subsections in toc}[square]
+
+%% --- Outer theme ---
+
+% Frame title
+\defbeamertemplate*{frametitle}{texsx}[1][] {
+    \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle}
+        \begin{tikzpicture}
+            % Header bar
+            \useasboundingbox (0,0) rectangle (\the\paperwidth, 1.25);
+
+            \fill[color=secondary, opacity=0.2] (0, 0) rectangle (\the\paperwidth, \the\paperheight);
+
+            \node[anchor=south east] at (\the\paperwidth, 0) {\includegraphics[height=1cm]{img/logo_mines.png}};
+
+            \ifx\insertframesubtitle\@empty {
+                \node[
+                    anchor=west,
+                    color=primary,
+                    font=\Large] at (0.05\paperwidth, 0.61) {\insertframetitle};
+            }
+            \else {
+                \node[
+                    anchor=west,
+                    white, 
+                    font=\Large] at (0.05\paperwidth, 0.81) {\insertframetitle};
+                \node[
+                    anchor=west,
+                    white,
+                    font=\small] at (0.05\paperwidth, 0.41) {\insertframesubtitle};
+            }
+            \fi
+        \end{tikzpicture}
+    \end{beamercolorbox}
+}
+
+% Frame footer
+\defbeamertemplate*{footline}{texsx}[1][] {
+    \ifnum \insertpagenumber=1
+        \leavevmode
+        \hbox {
+            \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+                % empty environment to raise height
+            \end{beamercolorbox}
+        }
+        \vskip0pt
+    \else
+        \begin{beamercolorbox}[wd=\paperwidth,ht=0.5cm]{footline}
+            \begin{tikzpicture}[remember picture, overlay]
+                \useasboundingbox[fill=white] (0,0) rectangle(\the\paperwidth, 0.4);
+
+                \fill[secondary] (0,0) rectangle (0.25\paperwidth, 0.4);
+
+                \node[
+                    minimum width=0.25\paperwidth,
+                    anchor=south west,
+                    color=white,
+                    font=\tiny] at (0, 0) {\insertshortauthor};
+
+                \fill[primary] (0.25\paperwidth, 0) rectangle (0.75\paperwidth, 0.4);
+
+                \node[
+                    minimum width=0.5\paperwidth,
+                    anchor=south west,
+                    color=white,
+                    font=\tiny] at (0.25\paperwidth, 0) {\inserttitle};
+
+                \fill[secondary] (0.75\paperwidth, 0) rectangle (\the\paperwidth, 0.4);
+
+                \node[
+                    minimum width=0.25\paperwidth,
+                    anchor=south west,
+                    color=white,
+                    font=\tiny] at (0.75\paperwidth, 0) {\insertframenumber{} / \inserttotalframenumber};
+
+            \end{tikzpicture}
+        \end{beamercolorbox}
+    \fi
+}
+
+\mode<all>
