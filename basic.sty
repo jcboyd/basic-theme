@@ -5,19 +5,17 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{shadows}
 
-\setbeamertemplate{blocks}[rounded][shadow=true]
-
 %% --- Colour theme ---
 
 % MINES colours
-\definecolor{primary}{rgb}{0, 0.36, 0.62}
-\definecolor{secondary}{rgb}{0.7, 0.7, 0.7}
-\definecolor{tertiary}{rgb}{0, 0, 0}
+%\definecolor{primary}{rgb}{0, 0.36, 0.62}
+%\definecolor{secondary}{rgb}{0.7, 0.7, 0.7}
+%\definecolor{tertiary}{rgb}{0, 0, 0}
 
 % Curie colours
-%\definecolor{primary}{rgb}{0.98, 0.53, 0.04}
-%\definecolor{secondary}{rgb}{0.73, 0.73, 0.73}
-%\definecolor{tertiary}{rgb}{0.32, 0.32, 0.32}
+\definecolor{primary}{rgb}{0.98, 0.53, 0.04}
+\definecolor{secondary}{rgb}{0.73, 0.73, 0.73}
+\definecolor{tertiary}{rgb}{0.32, 0.32, 0.32}
 
 % Settings
 \setbeamercolor*{title page header}{fg=black}
@@ -47,6 +45,7 @@
             anchor=south,
             minimum width=10cm,
             minimum height=1.5cm,
+            align=center,
             font=\sffamily\scshape\Large] at (current page.center) (titlebox){\inserttitle};
 
         \node[
@@ -67,10 +66,6 @@
     \end{tikzpicture}
 }
 
-% Items
-\setbeamertemplate{items}[square]
-\setbeamertemplate{sections/subsections in toc}[square]
-
 %% --- Outer theme ---
 
 % Frame title
@@ -82,7 +77,7 @@
 
             \fill[color=secondary, opacity=0.2] (0, 0) rectangle (\the\paperwidth, \the\paperheight);
 
-            \node[anchor=south east] at (\the\paperwidth, 0) {\includegraphics[height=1cm]{img/logo_mines.png}};
+            \node[anchor=south east] at (\the\paperwidth, 0) {\includegraphics[height=1cm]{img/logo_curie.png}};
 
             \ifx\insertframesubtitle\@empty {
                 \node[
@@ -148,5 +143,9 @@
         \end{beamercolorbox}
     \fi
 }
+
+\setbeamertemplate{items}[square]
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{blocks}[rounded][shadow=true]
 
 \mode<all>
