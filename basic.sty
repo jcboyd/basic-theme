@@ -1,5 +1,7 @@
 \mode<presentation>
 
+\usepackage[light,math]{anttor}
+
 % Requirement
 \RequirePackage{tikz}
 \usetikzlibrary{positioning}
@@ -13,9 +15,9 @@
 \definecolor{tertiary}{rgb}{0, 0, 0}
 
 % Curie colours
-% \definecolor{primary}{rgb}{0.98, 0.53, 0.04}
-% \definecolor{secondary}{rgb}{0.73, 0.73, 0.73}
-% \definecolor{tertiary}{rgb}{0.32, 0.32, 0.32}
+%\definecolor{primary}{rgb}{0.98, 0.53, 0.04}
+%\definecolor{secondary}{rgb}{0.73, 0.73, 0.73}
+%\definecolor{tertiary}{rgb}{0.32, 0.32, 0.32}
 
 % Settings
 \setbeamercolor*{title page header}{fg=black}
@@ -46,12 +48,12 @@
             minimum width=10cm,
             minimum height=1.5cm,
             align=center,
-            font=\sffamily\scshape\Large] at (current page.center) (titlebox){\inserttitle};
+            font=\Large] at (current page.center) (titlebox){\inserttitle};
 
         \node[
             below=of titlebox,
             color=tertiary,
-            font=\sffamily\scshape] (authorbox) {\insertauthor};
+            font=\scshape] (authorbox) {\insertauthor};
 
         \node[
             below=of authorbox,
@@ -60,7 +62,7 @@
 
         \node[
             below=of titlegraphicbox,
-            font=\sffamily\scshape\small,
+            font=\small,
             color=tertiary] (datebox) {\insertdate};
 
     \end{tikzpicture}
